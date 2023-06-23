@@ -1,23 +1,67 @@
-import logo from './logo.svg';
-import './App.css';
+import { Login } from './pages/login';
+// import { Navbar } from './components/navbar';
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Home } from './pages/home';
+import { Regis } from './pages/regis';
+import { Acount } from './pages/acount';
+import { Verify } from './pages/verify';
+import { useDispatch } from "react-redux";
+import  Axios  from 'axios';
+import { useEffect } from 'react';
+import { setValue } from './redux/acountSlice';
+import { ForgetPass } from './pages/forgetPass';
+import { Blog} from './pages/blog';
+import { ChangePassword } from './pages/changepassword';
+import { ChangeProfile } from './pages/changeprofile';
+import { CreateBlog } from './pages/createblog';
+import { Trending } from './pages/trending';
+import { ResetPassword } from './pages/resetpassword';
+
+
 
 function App() {
+
+  const token = localStorage.getItem("token")
+  const dispatch = useDispatch()
+  const keepLogin = async () => {
+    try {
+      const response = await Axios.get(`https://minpro-blog.purwadhikabootcamp.com/api/auth/`,{
+        headers:{
+          Authorization: `Bearer ${token}` 
+        }
+      })
+      dispatch(setValue(response.data))
+
+    } 
+    catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    keepLogin()
+  },[])
+
+  const router = createBrowserRouter([
+    {path:"/", element:<Home />},
+    {path:"/Login", element:<Login />},
+    {path:"/signUp", element:<Regis />},
+    {path:"/acount", element:<Acount />},
+    {path:"/Verify", element:<ForgetPass />},
+    {path:"/verification/:token", element:<Verify />},
+    {path:"/blog/:id", element:<Blog />},
+    {path:"/changepassword", element:<ChangePassword />},
+    {path:"/profileSetting", element:<ChangeProfile />},
+    {path:"/createBlog", element:<CreateBlog />},
+    {path:"/trending", element:<Trending />},
+    {path:"/reset-password/:token", element:<ResetPassword />}
+
+  ])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <RouterProvider router={router}>
+        
+      </RouterProvider>
     </div>
   );
 }
