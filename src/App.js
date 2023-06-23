@@ -16,6 +16,7 @@ import { ChangeProfile } from './pages/changeprofile';
 import { CreateBlog } from './pages/createblog';
 import { Trending } from './pages/trending';
 import { ResetPassword } from './pages/resetpassword';
+import { NotFound } from './pages/notFound';
 
 
 
@@ -54,7 +55,10 @@ function App() {
     {path:"/profileSetting", element:<ChangeProfile />},
     {path:"/createBlog", element:<CreateBlog />},
     {path:"/trending", element:<Trending />},
-    {path:"/reset-password/:token", element:<ResetPassword />}
+    {path:"/reset-password/:token", element:<ResetPassword />},
+    {path:"/Sorry:(", element:<NotFound />}
+
+
 
   ])
   return (

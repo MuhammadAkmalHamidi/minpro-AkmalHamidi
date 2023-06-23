@@ -78,6 +78,7 @@ export const Navbar = () => {
               _hover={{ color: "blue.500", textShadow: "0px 0px 20px white" }}
               cursor={"pointer"}
               ml={"100px"}
+              as={Link} to={"/Sorry:("}
             >
               Trending
             </Box>
@@ -91,11 +92,13 @@ export const Navbar = () => {
                   Category <ChevronDownIcon />
                 </MenuButton>
                 <MenuList mt={"20px"} position={"fixed"} bgColor={"blue.300"}>
-                    {value?.map((item, index) => {
-                  <MenuItem key={index} _hover={{ bgColor: "blue.500", transition: "0.3s", textShadow: "0px 0px 5px white" }} mb={"10px"} bgColor={"blue.300"}>
-                      {item.name}
-                  </MenuItem>
-                    })}
+                  {value?.map((item, index) => {
+                    return (
+                      <MenuItem key={index} value={item.id} _hover={{ bgColor: "blue.500", transition: "0.3s", textShadow: "0px 0px 5px white" }} mb={"10px"} bgColor={"blue.300"}>
+                        {item.name}
+                      </MenuItem>
+                    )
+                  })}
                 </MenuList>
               </Menu>
             </Box>

@@ -9,6 +9,8 @@ import "swiper/css/navigation";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
 import { LatesBlog } from "../components/latesBlog";
+import { FavBlog } from "../components/favBlog";
+import { Footer } from "../components/footer";
 
 export const Home = () => {
 
@@ -68,8 +70,10 @@ export const Home = () => {
       <Flex justifyContent={"center"}>
         <Box mt={"50px"}>
             <LatesBlog />
+            <FavBlog />
         </Box>
       </Flex>
+      <Footer />
     </Box>
   );
 };

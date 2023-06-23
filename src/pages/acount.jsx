@@ -71,7 +71,7 @@ export const Acount = () => {
                       />
                       <Text as={Link} to={"/profileSetting"} mb={"10px"}>Profile Setting</Text>
                     </Flex>
-                    
+
                     <Flex cursor={"pointer"}>
                       <EditIcon
                         boxSize={"18px"}
@@ -91,9 +91,34 @@ export const Acount = () => {
                 height={"430px"}
                 bgColor={"white"}
                 boxShadow={"0px 0px 10px white"}
+                p={"50px"}
               >
-
-              
+                <Box>
+                  <Box mb={"10px"}>
+                    <Heading mb={"10px"} color={"blue.200"}>
+                      Username
+                    </Heading>
+                    <Box p={"10px"} color={"white"} textShadow={"1px 1px 3px white"} shadow={"inner"} borderRadius={"10px"} fontSize={"25px"} w={"400px"}bgColor={"blue.200"}>
+                      {dataUser.username}
+                    </Box>
+                  </Box>
+                  <Box  mb={"10px"}>
+                    <Heading mb={"10px"} color={"blue.200"}>
+                      Email
+                    </Heading>
+                    <Box p={"10px"} color={"white"} textShadow={"1px 1px 3px white"} shadow={"inner"} borderRadius={"10px"} fontSize={"25px"} w={"400px"}bgColor={"blue.200"}>
+                      {dataUser.email}
+                    </Box>
+                  </Box>
+                  <Box >
+                    <Heading mb={"10px"} color={"blue.200"}>
+                      Phone Number
+                    </Heading>
+                    <Box p={"10px"} color={"white"} textShadow={"1px 1px 3px white"} shadow={"inner"} borderRadius={"10px"} fontSize={"25px"} w={"400px"}bgColor={"blue.200"}>
+                      {dataUser.phone}
+                    </Box>
+                  </Box>
+                </Box>
               </Box>
             </Flex>
           </Flex>

@@ -4,6 +4,8 @@ import Axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { LatesBlog } from "../components/latesBlog"
+import { FavBlog } from "../components/favBlog"
+import { Footer } from "../components/footer"
 
 export const Blog = () => {
     const params = useParams()
@@ -47,6 +49,8 @@ export const Blog = () => {
                 </Box>
             </Flex>
             <LatesBlog />
+            <FavBlog />
+            <Footer />
         </Box>
     )
 }
