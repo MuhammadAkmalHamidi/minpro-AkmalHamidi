@@ -74,23 +74,23 @@ export const MyBlog = () => {
                 boxShadow={"0px 0px 15px white"}
               >
                 <Box>
-                <Flex justify={"center"}>
-                      <Avatar bgColor={"rgba(0,0,0,0)"} boxSize={"100px"} src={`https://minpro-blog.purwadhikabootcamp.com/${dataUser.imgProfile}`} />
-                    </Flex>
-                    <Flex justifyContent={"center"}>
-                      <Heading textShadow={"0px 0px 5px white"}>{dataUser.username}</Heading>
-                    </Flex>
-                    <Flex
-                      mb={"20px"}
-                      textShadow={"0px 0px 3px white"}
-                      justifyContent={"center"}
-                    >
-                      <Text>{dataUser.email} </Text>
-                    </Flex>
-                    <PicChange />
+                  <Flex justify={"center"}>
+                    <Avatar bgColor={"rgba(0,0,0,0)"} boxSize={"100px"} src={`https://minpro-blog.purwadhikabootcamp.com/${dataUser.imgProfile}`} />
+                  </Flex>
+                  <Flex justifyContent={"center"}>
+                    <Heading textShadow={"0px 0px 5px white"}>{dataUser.username}</Heading>
+                  </Flex>
+                  <Flex
+                    mb={"20px"}
+                    textShadow={"0px 0px 3px white"}
+                    justifyContent={"center"}
+                  >
+                    <Text>{dataUser.email} </Text>
+                  </Flex>
+                  <PicChange />
                   <Box textShadow={"0px 0px 3px white"} fontSize={"20px"}>
 
-                  <Flex cursor={"pointer"}>
+                    <Flex cursor={"pointer"}>
                       <PlusSquareIcon mt={"6px"} mr={"5px"} />{" "}
                       <Text as={Link} to={"/acount"} mb={"10px"}>Profile</Text>
                     </Flex>
@@ -136,9 +136,11 @@ export const MyBlog = () => {
                     return (
                       <Flex key={index}>
                         <Flex maxW={"300px"}>
-                          <Box onClick={() => handleClick(item.id)} cursor={"pointer"} _hover={{transform:"scale(0.9)", transition:"0.2s"}} shadow={"3px 3px 2px gray"} color={"white"} p={"5px"} mr={"10px"} bgColor={"blue.200"} borderRadius={"10px"}>
+                          <Box onClick={() => handleClick(item.id)} cursor={"pointer"} _hover={{ transform: "scale(0.9)", transition: "0.2s" }} shadow={"3px 3px 2px gray"} color={"white"} p={"5px"} mr={"10px"} bgColor={"blue.200"} borderRadius={"10px"}>
                             <Image borderRadius={"10px"} w={"300px"} shadow={"inner"} src={`https://minpro-blog.purwadhikabootcamp.com/${item.imageURL}`} />
-                            <Text> {item.title} </Text>
+                            <Flex justifyContent={"center"} textShadow={"0px 0px 3px white"}>
+                              <Text> {item.title} </Text>
+                            </Flex>
                           </Box>
                         </Flex>
                       </Flex>

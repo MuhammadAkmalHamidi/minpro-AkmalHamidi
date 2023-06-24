@@ -42,7 +42,7 @@ export const Regis = () => {
 
   const submitHandle = async (data) => {
     try {
-      data.FE_URL="http://localhost:3000"
+      data.FE_URL= window.location.origin
       const response = await Axios.post("https://minpro-blog.purwadhikabootcamp.com/api/auth/", data);
       console.log(data);
       alert("check your email to verify your acount")
