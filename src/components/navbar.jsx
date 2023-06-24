@@ -66,6 +66,7 @@ export const Navbar = () => {
             ml={"20px"}
             color={"white"}
             fontSize={"40px"}
+            textShadow={"0px 0px 5px white"}
           >
             BroLog
           </Box>
@@ -137,17 +138,17 @@ export const Navbar = () => {
                 </Box>
               </Box>
               <Box mb={"20px"}>
-                <Text textShadow={"0px 0px 5px white"} as={Link} to={"/acount"} ml={"10px"} cursor={"pointer"} w={"90px"} _hover={{ textShadow: "0px 0px 0px", color: "blue.500", transition: "0.3s" }}>
+                <Text  as={Link} to={"/acount"} ml={"10px"} cursor={"pointer"} w={"90px"} _hover={{ textShadow: "0px 0px 5px white", transform:"scale(1.2)", transition: "0.3s" }}>
                   My Account
                 </Text>
               </Box>
               <Box>
-                <Text textShadow={"0px 0px 5px white"} as={Link} to={"/createBlog"} ml={"10px"} cursor={"pointer"} w={"90px"} _hover={{ textShadow: "0px 0px 0px", color: "blue.500", transition: "0.3s" }}>
+                <Text as={Link} to={"/createBlog"} ml={"10px"} cursor={"pointer"} w={"90px"} _hover={{ textShadow: "0px 0px 5px white", transition: "0.3s" }}>
                   Create Blog
                 </Text>
               </Box>
               <Flex justifyContent={"center"}>
-                <Button onClick={logOut} mt={"20px"} color={"blue.500"}>Log Out</Button>
+                <Button onClick={logOut} mt={"20px"} color={"red.200"}>Log Out</Button>
               </Flex>
             </MenuList>
           </Menu>

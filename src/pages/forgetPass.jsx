@@ -1,21 +1,21 @@
 import { Box, Button, Flex, FormControl, Heading, Input, border } from "@chakra-ui/react"
 import Axios from "axios"
 import { ErrorMessage, Field, Form, Formik } from "formik"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
 export const ForgetPass = () => {
-
+    const navigate = useNavigate()
     const validationSchema = Yup.object().shape({
         email: Yup.string().email("email not valid")
     })
 
     const handleSubmit = async (data) => {
         try {
+            data.FE_URL = window.location.origin
             const response = await Axios.put(`https://minpro-blog.purwadhikabootcamp.com/api/auth/forgotPass`, data)
             alert("check your email to verify")
         } catch (error) {
-            alert('input yang bener napa blok!')
             console.log(error);
         }
     }
@@ -24,7 +24,7 @@ export const ForgetPass = () => {
     }
 
     return (
-        <Box bgColor={"blue.200"} w={"100%"} h={"100vh"}>
+        <Box bgGradient={"linear(to-r, blue.300 , red.200)"} w={"100%"} h={"100vh"}>
             <Formik
                 onSubmit={(values) => {
                     handleSubmit(values)

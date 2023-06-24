@@ -3,10 +3,12 @@ import { Box, Button, Flex, FormControl, Heading, Input, Text } from "@chakra-ui
 import Axios from "axios"
 import { ErrorMessage, Field, Form, Formik } from "formik"
 import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
 import * as Yup from "yup";
 
 export const ChangeUsername = () => {
     
+    const navigate = useNavigate()
     const token = localStorage.getItem("token")
     const dataUser = useSelector((state) => state.user.value)
     
@@ -26,9 +28,12 @@ export const ChangeUsername = () => {
         }
     
         try {
+            data.FE_URL = window.location.origin
             const response = await Axios.patch(`https://minpro-blog.purwadhikabootcamp.com/api/auth/changeUsername`, data,
                 { headers }
             )
+            localStorage.removeItem("token")
+            navigate("/login")
             // console.log(response.value.username);
         } catch (error) {
             console.log(error);

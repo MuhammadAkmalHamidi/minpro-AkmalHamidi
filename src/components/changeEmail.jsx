@@ -1,6 +1,7 @@
 import { Box, Button, Flex, FormControl, Input, Text } from "@chakra-ui/react"
 import Axios from "axios"
 import { ErrorMessage, Field, Form, Formik } from "formik"
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
 export const ChangeEmail = () => {
@@ -17,18 +18,22 @@ export const ChangeEmail = () => {
         .required("new email is required"),
     })
 
+    const navigate = useNavigate()
 
     const changeEmail = async (data) => {
+
         const headers = {
             "Authorization": `Bearer ${token}`
         }
 
         try {
+            data.FE_URL = window.location.origin
             const response = await Axios.patch("https://minpro-blog.purwadhikabootcamp.com/api/auth/changeEmail", data,
                 { headers }
             )
             console.log(response.data);
-
+            localStorage.removeItem("token")
+            navigate("/login")
         } catch (error) {
             console.log(error);
             alert('codingannya salah blok!')

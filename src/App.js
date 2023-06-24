@@ -52,6 +52,7 @@ function App() {
     {path:"/acount", element:<Acount />},
     {path:"/Verify", element:<ForgetPass />},
     {path:"/verification/:token", element:<Verify />},
+    {path:"/verification-change-email/:token", element:<Verify />},
     {path:"/blog/:id", element:<Blog />},
     {path:"/changepassword", element:<ChangePassword />},
     {path:"/profileSetting", element:<ChangeProfile />},

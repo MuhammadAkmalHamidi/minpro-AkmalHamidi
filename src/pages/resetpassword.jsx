@@ -18,9 +18,9 @@ const validationSchema = Yup.object().shape({
 export const ResetPassword = () => {
 
     const { token } = useParams()
-    const handleSubmit = async () => {
+    const handleSubmit = async (data) => {
         try {
-            const response = await Axios.patch(`https://minpro-blog.purwadhikabootcamp.com/api/auth/resetPass`, {},
+            const response = await Axios.patch(`https://minpro-blog.purwadhikabootcamp.com/api/auth/resetPass`, data,
                 {
                     headers: { Authorization: `bearer ${token}` }
                 }
@@ -36,8 +36,8 @@ export const ResetPassword = () => {
         confirmPassword: ""
     }
     return (
-        <Flex justifyContent={"center"} bgColor={"blue.200"} h={"100vh"} >
-            <Box boxShadow={"0px 0px 15px white"} borderRadius={"20px"} color={"white"} bgColor={"rgba(255,255,255,0.3)"} h={"fit-content"} p={"20px"} mt={"200px"}>
+        <Flex justifyContent={"center"} bgGradient={"linear(to-r, blue.300 , red.200)"}h={"100vh"} >
+            <Box boxShadow={"0px 0px 10px white"} borderRadius={"20px"} color={"white"} bgColor={"rgba(255,255,255,0.2)"} h={"fit-content"} p={"20px"} mt={"200px"}>
                 <Flex justifyContent={"center"}>
                     <Heading mb={"40px"}>Input your new password</Heading>
                 </Flex>

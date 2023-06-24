@@ -34,8 +34,8 @@ export const FavBlog = () => {
     return (
         <Box>
             <Flex w={"1200px"}>
-                <Heading color={"blue.200"}>Favorite Blog</Heading>
-                <Box ml={"10px"} mt={"35px"} w={"1000px"} h={"2px"} bgColor={"blue.200"}></Box>
+                <Heading bgClip={"text"} bgGradient={"linear(to-r, blue.200 ,purple)"}>Favorite Blog</Heading>
+                <Box ml={"10px"} mt={"35px"} w={"950px"} h={"3px"} bgGradient={"linear(to-r, blue.200 , purple)"}></Box>
             </Flex>
             <Flex justifyContent={"center"}>
                 <Flex bgColor={"rgb(135,206,250)"} mt={"20px"} borderRadius={"10px"} mb={"20px"} shadow={"inner"} p={"20px"} w={"900px"} h={"330px"} overflowX={"scroll"}>

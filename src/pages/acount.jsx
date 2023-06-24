@@ -16,7 +16,7 @@ export const Acount = () => {
       <Navbar />
       <Box pt={"75px"} mb={"150px"}>
         <Flex justifyContent={"center"}>
-          <Heading mt={"10px"} color={"blue.200"} textShadow={"0px 0px 3px"}>
+          <Heading mt={"10px"}  bgClip={"text"} bgGradient={"linear(to-r, blue.200, purple)"} textShadow={"0px 0px 3px"}>
             My Account
           </Heading>
         </Flex>

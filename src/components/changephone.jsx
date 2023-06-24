@@ -3,11 +3,13 @@ import { Box, Button, Flex, FormControl, Heading, Input, Text } from "@chakra-ui
 import Axios from "axios"
 import { ErrorMessage, Field, Form, Formik } from "formik"
 import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
 import * as Yup from "yup";
 
 export const ChangePhone = () => {
     
     const token = localStorage.getItem("token")
+    const navigate = useNavigate()
     const dataUser = useSelector((state) => state.user.value)
     
     const validationSchema = Yup.object().shape({
@@ -26,9 +28,13 @@ export const ChangePhone = () => {
         }
     
         try {
+            data.FE_URL = window.location.origin
             const response = await Axios.patch(`https://minpro-blog.purwadhikabootcamp.com/api/auth/changePhone`, data,
                 { headers }
             )
+            alert("check your email")
+            localStorage.removeItem("token")
+            navigate("/login")
             // console.log(response.value.username);
         } catch (error) {
             console.log(error);

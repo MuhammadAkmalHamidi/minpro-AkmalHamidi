@@ -36,10 +36,12 @@ export const ChangePassword = () => {
         }
 
         try {
+            data.FE_URL = window.location.origin
             const response = await Axios.patch(`https://minpro-blog.purwadhikabootcamp.com/api/auth/changePass`, data,
                 { headers }
             )
             alert("password has been change")
+            
         } catch (error) {
             console.log(error);
         }
