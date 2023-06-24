@@ -6,6 +6,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import Axios from "axios";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
+import { PicChange } from "../components/changeimg";
 
 export const ChangePassword = () => {
 
@@ -60,7 +61,7 @@ export const ChangePassword = () => {
                 </Flex>
                 <Flex w={"100%"} h={"500px"} mt={"20px"} justifyContent={"center"}>
                     <Flex
-                        bgColor={"blue.200"}
+                        bgGradient={"linear(to-r, blue.300 , red.200)"}
                         w={"70%"}
                         h={"550px"}
                         p={"15px"}
@@ -83,22 +84,25 @@ export const ChangePassword = () => {
                             >
                                 <Box>
                                     <Flex justify={"center"}>
-                                        <Flex>
-                                            <Avatar boxSize={"100px"} src="" />
-                                        </Flex>
+                                        <Avatar bgColor={"rgba(0,0,0,0)"} boxSize={"100px"} src={`https://minpro-blog.purwadhikabootcamp.com/${dataUser.imgProfile}`} />
                                     </Flex>
                                     <Flex justifyContent={"center"}>
                                         <Heading textShadow={"0px 0px 5px white"}>{dataUser.username}</Heading>
                                     </Flex>
                                     <Flex
-                                        mb={"40px"}
+                                        mb={"20px"}
                                         textShadow={"0px 0px 3px white"}
                                         justifyContent={"center"}
                                     >
                                         <Text>{dataUser.email} </Text>
                                     </Flex>
+                                    <PicChange />
                                     <Box textShadow={"0px 0px 3px white"} fontSize={"20px"}>
                                         <Flex cursor={"pointer"}>
+                                            <PlusSquareIcon mt={"6px"} mr={"5px"} />{" "}
+                                            <Text as={Link} to={"/acount"} mb={"10px"}>Profile</Text>
+                                        </Flex>
+                                        <Flex as={Link} to={"/myblog"} cursor={"pointer"}>
                                             <PlusSquareIcon mt={"6px"} mr={"5px"} />{" "}
                                             <Text mb={"10px"}>My Blog</Text>
                                         </Flex>

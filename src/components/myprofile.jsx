@@ -2,6 +2,7 @@ import { Box,Flex, Heading} from "@chakra-ui/react"
 import { ChangeUsername } from "./changeUsername"
 import { ChangeEmail } from "./changeEmail"
 import { ChangePhone } from "./changephone"
+import { ChangeAva } from "./changeimg"
 
 export const Profile = () => {
     return (
@@ -15,6 +16,7 @@ export const Profile = () => {
                 <ChangeUsername />
                 <ChangeEmail />
                 <ChangePhone />
+                {/* <ChangeAva /> */}
             </Box>
         </Box>
     )

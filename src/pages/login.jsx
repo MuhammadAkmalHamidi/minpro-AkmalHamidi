@@ -59,7 +59,7 @@ export const Login = () => {
       className="bg"
       w={"100%"}
       h={"100vh"}
-      bgGradient="linear(blue.400,blue.200 )"
+      bgGradient={"linear(to-r, blue.300 , red.200)"}
       //   bgColor={"blue.200"}
       display={"flex"}
       justifyContent={"center"}

@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { LatesBlog } from "../components/latesBlog";
 import { FavBlog } from "../components/favBlog";
 import { Footer } from "../components/footer";
+import { BsTwitter, BsFacebook, BsInstagram } from "react-icons/bs";
 
 export const Home = () => {
 

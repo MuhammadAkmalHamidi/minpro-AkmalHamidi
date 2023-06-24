@@ -90,7 +90,7 @@ export function CreateBlog() {
                             <Form>
                                 <Flex w={"1000px"} p={"100px"} >
                                     <Flex mr={"100px"}>
-                                        <Box boxShadow={"0px 0px 5px gray"} borderRadius={"10px"} p={"20px"} color={"white"} bgColor={"rgba(135,206,250,0.9)"}>
+                                        <Box boxShadow={"0px 0px 5px gray"} borderRadius={"10px"} p={"20px"} color={"white"} bgGradient={"linear(, blue.200 , red.200)"}>
                                             <Box>
                                                 <Field name="title">
                                                     {({ field }) => (

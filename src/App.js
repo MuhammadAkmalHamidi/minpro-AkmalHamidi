@@ -17,6 +17,8 @@ import { CreateBlog } from './pages/createblog';
 import { Trending } from './pages/trending';
 import { ResetPassword } from './pages/resetpassword';
 import { NotFound } from './pages/notFound';
+import { MyBlog } from './pages/myblog';
+import { SearchPage } from './pages/search';
 
 
 
@@ -56,7 +58,9 @@ function App() {
     {path:"/createBlog", element:<CreateBlog />},
     {path:"/trending", element:<Trending />},
     {path:"/reset-password/:token", element:<ResetPassword />},
-    {path:"/Sorry:(", element:<NotFound />}
+    {path:"/Sorry:(", element:<NotFound />},
+    {path:"/myblog", element:<MyBlog />},
+    {path:"/search", element:<SearchPage />}
 
 
 

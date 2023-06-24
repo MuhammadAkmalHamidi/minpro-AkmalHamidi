@@ -1,20 +1,50 @@
-import { Avatar, Box, Flex, Heading, Show, Text } from "@chakra-ui/react";
+import { Avatar, Box, Flex, Heading, Image, Show, Text } from "@chakra-ui/react";
 import { Navbar } from "../components/navbar";
 import { EditIcon, PlusSquareIcon } from "@chakra-ui/icons";
 import { useSelector } from "react-redux";
-import { Profile } from "../components/myprofile";
-import { Link } from "react-router-dom";
-import { Footer } from "../components/footer";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import Axios from "axios";
+import { useEffect, useState } from "react";
 import { PicChange } from "../components/changeimg";
 
-export const Acount = () => {
+export const MyBlog = () => {
 
+  const [blog, setBlog] = useState()
+  const token = localStorage.getItem("token")
   const dataUser = useSelector((state) => state.user.value)
+  const navigate = useNavigate()
+
+
+  const myBlog = async () => {
+    try {
+      const response = await Axios.get(`https://minpro-blog.purwadhikabootcamp.com/api/blog/pagUser/`,
+        {
+          headers:
+          {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      )
+      setBlog(response.data.result)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  console.log(blog);
+
+  useEffect(() => {
+    myBlog()
+  }, [])
+
+  const handleClick = (id) => {
+    navigate("/")
+    navigate(`/blog/${id}`)
+  }
 
   return (
     <Box>
       <Navbar />
-      <Box pt={"75px"} mb={"150px"}>
+      <Box pt={"75px"}>
         <Flex justifyContent={"center"}>
           <Heading mt={"10px"} color={"blue.200"} textShadow={"0px 0px 3px"}>
             My Account
@@ -44,23 +74,23 @@ export const Acount = () => {
                 boxShadow={"0px 0px 15px white"}
               >
                 <Box>
-                  <Flex justify={"center"}>
-                    <Avatar bgColor={"rgba(0,0,0,0)"} boxSize={"100px"} src={`https://minpro-blog.purwadhikabootcamp.com/${dataUser.imgProfile}`} />
-                  </Flex>
-                  <Flex justifyContent={"center"}>
-                    <Heading textShadow={"0px 0px 5px white"}>{dataUser.username}</Heading>
-                  </Flex>
-                  <Flex
-                    mb={"20px"}
-                    textShadow={"0px 0px 3px white"}
-                    justifyContent={"center"}
-                  >
-                    <Text>{dataUser.email} </Text>
-                  </Flex>
-                  <PicChange />
+                <Flex justify={"center"}>
+                      <Avatar bgColor={"rgba(0,0,0,0)"} boxSize={"100px"} src={`https://minpro-blog.purwadhikabootcamp.com/${dataUser.imgProfile}`} />
+                    </Flex>
+                    <Flex justifyContent={"center"}>
+                      <Heading textShadow={"0px 0px 5px white"}>{dataUser.username}</Heading>
+                    </Flex>
+                    <Flex
+                      mb={"20px"}
+                      textShadow={"0px 0px 3px white"}
+                      justifyContent={"center"}
+                    >
+                      <Text>{dataUser.email} </Text>
+                    </Flex>
+                    <PicChange />
                   <Box textShadow={"0px 0px 3px white"} fontSize={"20px"}>
 
-                    <Flex cursor={"pointer"}>
+                  <Flex cursor={"pointer"}>
                       <PlusSquareIcon mt={"6px"} mr={"5px"} />{" "}
                       <Text as={Link} to={"/acount"} mb={"10px"}>Profile</Text>
                     </Flex>
@@ -99,40 +129,27 @@ export const Acount = () => {
                 height={"430px"}
                 bgColor={"white"}
                 boxShadow={"0px 0px 10px white"}
-                p={"50px"}
+                p={"20px"}
               >
-                <Box>
-                  <Box mb={"10px"}>
-                    <Heading mb={"10px"} color={"blue.200"}>
-                      Username
-                    </Heading>
-                    <Box p={"10px"} color={"white"} textShadow={"1px 1px 3px white"} shadow={"inner"} borderRadius={"10px"} fontSize={"25px"} w={"400px"} bgColor={"blue.200"}>
-                      {dataUser.username}
-                    </Box>
-                  </Box>
-                  <Box mb={"10px"}>
-                    <Heading mb={"10px"} color={"blue.200"}>
-                      Email
-                    </Heading>
-                    <Box p={"10px"} color={"white"} textShadow={"1px 1px 3px white"} shadow={"inner"} borderRadius={"10px"} fontSize={"25px"} w={"400px"} bgColor={"blue.200"}>
-                      {dataUser.email}
-                    </Box>
-                  </Box>
-                  <Box >
-                    <Heading mb={"10px"} color={"blue.200"}>
-                      Phone Number
-                    </Heading>
-                    <Box p={"10px"} color={"white"} textShadow={"1px 1px 3px white"} shadow={"inner"} borderRadius={"10px"} fontSize={"25px"} w={"400px"} bgColor={"blue.200"}>
-                      {dataUser.phone}
-                    </Box>
-                  </Box>
-                </Box>
+                <Flex maxW={"500px"}>
+                  {blog?.map((item, index) => {
+                    return (
+                      <Flex key={index}>
+                        <Flex maxW={"300px"}>
+                          <Box onClick={() => handleClick(item.id)} cursor={"pointer"} _hover={{transform:"scale(0.9)", transition:"0.2s"}} shadow={"3px 3px 2px gray"} color={"white"} p={"5px"} mr={"10px"} bgColor={"blue.200"} borderRadius={"10px"}>
+                            <Image borderRadius={"10px"} w={"300px"} shadow={"inner"} src={`https://minpro-blog.purwadhikabootcamp.com/${item.imageURL}`} />
+                            <Text> {item.title} </Text>
+                          </Box>
+                        </Flex>
+                      </Flex>
+                    )
+                  })}
+                </Flex>
               </Box>
             </Flex>
           </Flex>
         </Flex>
-      </Box>
-      <Footer />
-    </Box>
-  );
-};
+      </Box >
+    </Box >
+  )
+}

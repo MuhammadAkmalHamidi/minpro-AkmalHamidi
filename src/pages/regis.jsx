@@ -69,7 +69,7 @@ export const Regis = () => {
       p={"40px"}
       w={"100%"}
       h={"100vh"}
-      bgColor={"blue.200"}
+      bgGradient={"linear(to-r, blue.300 , red.200)"}
     >
       <Box
         p={"50px"}

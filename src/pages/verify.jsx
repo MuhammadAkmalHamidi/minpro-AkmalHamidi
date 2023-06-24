@@ -21,7 +21,7 @@ export const Verify = () => {
   };
 
   return (
-    <Flex w={"100%"} h={"100vh"} bgColor={"blue.200"} justifyContent={"center"}>
+    <Flex w={"100%"} h={"100vh"} bgGradient={"linear(to-r, blue.300 , red.200)"}   justifyContent={"center"}>
       <Flex justifyContent={"center"}>
         <Box>
           <Flex

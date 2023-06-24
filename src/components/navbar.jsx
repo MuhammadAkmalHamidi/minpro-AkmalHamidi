@@ -1,4 +1,4 @@
-import { ChevronDownIcon, HamburgerIcon, Search2Icon } from "@chakra-ui/icons";
+import { ChevronDownIcon, HamburgerIcon, Search2Icon, SearchIcon } from "@chakra-ui/icons";
 import {
   Box,
   Flex,
@@ -19,6 +19,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
 
+  const dataUser = useSelector((state) => state.user.value)
   const [value, setValue] = useState()
   const token = localStorage.getItem("token")
   const navigate = useNavigate()
@@ -28,7 +29,6 @@ export const Navbar = () => {
     try {
       const response = await Axios.get(`https://minpro-blog.purwadhikabootcamp.com/api/blog/allCategory`, data)
       setValue(response.data)
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -44,18 +44,22 @@ export const Navbar = () => {
 
   }
 
+  const Search = () => {
+    navigate("/search")
+  }
+
   return (
     <Flex
       position={"fixed"}
       boxShadow={"0px 0px 10px gray"}
-      bgGradient={"linear(blue.400, blue.100)"}
+      bgGradient={"linear(to-r, blue.200, purple , red.200)"}
       w={"100%"}
       h={"75px"}
       color={"white"}
       justifyContent={"space-between"}
       zIndex={"9999999"}
     >
-      <Flex textShadow={"0px 0px 5px white"}>
+      <Flex>
         <Flex>
           <Box
             fontWeight={"light"}
@@ -67,7 +71,7 @@ export const Navbar = () => {
           </Box>
           <Flex mt={"25px"}>
             <Box
-              _hover={{ color: "blue.500", textShadow: "0px 0px 20px white" }}
+              _hover={{ textShadow: "0px 0px 20px white", transition:"0.3s" }}
               cursor={"pointer"}
               ml={"100px"}
               as={Link} to={"/"}
@@ -75,7 +79,7 @@ export const Navbar = () => {
               Home
             </Box>
             <Box
-              _hover={{ color: "blue.500", textShadow: "0px 0px 20px white" }}
+             _hover={{ textShadow: "0px 0px 20px white", transition:"0.3s" }}
               cursor={"pointer"}
               ml={"100px"}
               as={Link} to={"/Sorry:("}
@@ -86,15 +90,14 @@ export const Navbar = () => {
               <Menu>
                 <MenuButton
                   transition="all 0.2s"
-                  textShadow={"0px 0px 5px white"}
-                  _hover={{ color: "blue.500", textShadow: "None" }}
+                  _hover={{ textShadow: "0px 0px 20px white", transition:"0.3s" }}
                 >
                   Category <ChevronDownIcon />
                 </MenuButton>
-                <MenuList mt={"20px"} position={"fixed"} bgColor={"blue.300"}>
+                <MenuList mt={"20px"} position={"fixed"} bgGradient={"linear(, blue.200 , red.200)"}>
                   {value?.map((item, index) => {
                     return (
-                      <MenuItem key={index} value={item.id} _hover={{ bgColor: "blue.500", transition: "0.3s", textShadow: "0px 0px 5px white" }} mb={"10px"} bgColor={"blue.300"}>
+                      <MenuItem key={index} value={item.id} _hover={{ bgColor: "rgba(0,0,0,0)", transition: "0.3s", textShadow: "0px 0px 5px white" }} mb={"10px"} bgColor={"rgba(0,0,0,0)"}>
                         {item.name}
                       </MenuItem>
                     )
@@ -102,6 +105,15 @@ export const Navbar = () => {
                 </MenuList>
               </Menu>
             </Box>
+
+            <Box ml={"450px"}>
+            <Search2Icon
+              _hover={{ transform:"scale(1.2)", transition: "0.3s" }}
+              cursor={"pointer"}
+              boxSize={"25px"}
+              onClick={Search}
+            />
+          </Box>
           </Flex>
         </Flex>
       </Flex>
@@ -112,14 +124,14 @@ export const Navbar = () => {
 
           <Menu>
             <MenuButton mr={"40px"}
-              _hover={{ color: "blue.500", transition: "0.3s" }}
+              _hover={{ transform:"scale(1.2)", transition: "0.3s" }}
               cursor={"pointer"}
             >
               <HamburgerIcon boxSize={"40px"} />
             </MenuButton>
-            <MenuList mr={"20px"} bgColor={"blue.300"}>
+            <MenuList mr={"20px"} bgGradient={"linear(, blue.200 , red.200)"}>
               <Box mb={"30px"} ml={"60px"}>
-                <Avatar ml={"15px"} bgColor={"rgba(0,0,0,0)"} src={data.imgProfile} />
+              <Avatar bgColor={"rgba(0,0,0,0)"} boxSize={"100px"} src={`https://minpro-blog.purwadhikabootcamp.com/${dataUser.imgProfile}`} />
                 <Box>
                   {data.username}
                 </Box>
@@ -143,14 +155,7 @@ export const Navbar = () => {
         </>
       ) : (
         <>
-          <Box ml={"400px"}>
-            <Search2Icon
-              mt={"25px"}
-              _hover={{ color: "blue.500", transition: "0.3s" }}
-              cursor={"pointer"}
-              boxSize={"25px"}
-            />
-          </Box>
+          
           <Flex>
 
             <Flex
