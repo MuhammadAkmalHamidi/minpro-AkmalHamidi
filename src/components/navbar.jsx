@@ -163,8 +163,6 @@ export const Navbar = () => {
               mt={"10px"}
               _hover={{
                 boxShadow: "0px 0px 10px white",
-                bgColor: "blue.500",
-                color: "white",
                 textShadow: "0px 0px 10px white",
               }}
               transition={"0.3s"}
@@ -174,7 +172,7 @@ export const Navbar = () => {
               lineHeight={"50px"}
               justifyContent={"center"}
               bgColor={"white"}
-              color={"blue.200"}
+              color={"red.200"}
               w={"70px"}
               h={"50px"}
               as={Link}
@@ -186,8 +184,6 @@ export const Navbar = () => {
               mt={"10px"}
               _hover={{
                 boxShadow: "0px 0px 10px white",
-                bgColor: "blue.500",
-                color: "white",
                 textShadow: "0px 0px 10px white",
               }}
               transition={"0.3s"}
@@ -197,7 +193,7 @@ export const Navbar = () => {
               lineHeight={"50px"}
               justifyContent={"center"}
               bgColor={"white"}
-              color={"blue.200"}
+              color={"red.200"}
               w={"70px"}
               h={"50px"}
               as={Link}

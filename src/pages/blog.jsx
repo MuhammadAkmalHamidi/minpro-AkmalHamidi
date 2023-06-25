@@ -29,7 +29,7 @@ export const Blog = () => {
             <Flex pt={"50px"} pl={"100px"} pr={"100px"} justifyContent={"center"}>
                 <Box p={"20px"} w={"fit-content"}>
                     <Box>
-                        <Heading textShadow={"2px 2px 2px gray"} fontSize={"70px"} mb={"5px"} color={"blue.200"}>
+                        <Heading textShadow={"2px 2px 2px gray"} fontSize={"70px"} mb={"30px"} color={"blue.200"}>
                             {data?.title}
                         </Heading>
                     </Box>
