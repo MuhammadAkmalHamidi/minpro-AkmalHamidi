@@ -36,7 +36,6 @@ export const ChangeEmail = () => {
             navigate("/login")
         } catch (error) {
             console.log(error);
-            alert('codingannya salah blok!')
         }
     }
     const initialValues = {
