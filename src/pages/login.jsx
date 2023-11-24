@@ -35,9 +35,9 @@ export const Login = () => {
       .required("Password Is Required"),
     });
 
-  const onLogin = async () => {
+  const onLogin = async (data) => {
     try {
-      const response = await Axios.post(`https://minpro-blog.purwadhikabootcamp.com/api/auth/login`)
+      const response = await Axios.post(`https://minpro-blog.purwadhikabootcamp.com/api/auth/login`,data)
       console.log(response);
       dispatch(setValue(response.data.isAccountExist))
       localStorage.setItem("token",response.data.token)

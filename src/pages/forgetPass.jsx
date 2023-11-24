@@ -24,7 +24,7 @@ export const ForgetPass = () => {
     }
 
     return (
-        <Box bgGradient={"linear(to-r, blue.300 , red.200)"}w w={"100%"} h={"100vh"}>
+        <Box bgGradient={"linear(to-r, blue.300 , red.200)"} w={"100%"} h={"100vh"}>
             <Formik
                 onSubmit={(values) => {
                     handleSubmit(values)
